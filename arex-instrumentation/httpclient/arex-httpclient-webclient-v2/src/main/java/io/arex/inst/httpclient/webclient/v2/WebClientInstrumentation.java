@@ -1,4 +1,4 @@
-package io.arex.inst.httpclient.webclient.v5;
+package io.arex.inst.httpclient.webclient.v2;
 
 import static java.util.Collections.singletonList;
 import static net.bytebuddy.matcher.ElementMatchers.named;

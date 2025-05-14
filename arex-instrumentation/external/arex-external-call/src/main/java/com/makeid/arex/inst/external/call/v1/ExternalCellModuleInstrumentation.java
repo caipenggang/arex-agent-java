@@ -1,4 +1,4 @@
-package io.arex.inst.httpclient.webclient.v5;
+package com.makeid.arex.inst.external.call.v1;
 
 import static java.util.Collections.singletonList;
 
@@ -10,14 +10,14 @@ import io.arex.inst.extension.TypeInstrumentation;
 import java.util.List;
 
 @AutoService(ModuleInstrumentation.class)
-public class WebClientModuleInstrumentation extends ModuleInstrumentation {
-    public WebClientModuleInstrumentation() {
-        super("webclient-v5", ModuleDescription.builder()
-                .supportFrom(ComparableVersion.of("5.3.8")).build());
+public class ExternalCellModuleInstrumentation extends ModuleInstrumentation {
+    public ExternalCellModuleInstrumentation() {
+        super("webclient-v2", ModuleDescription.builder()
+                .supportFrom(ComparableVersion.of("5.2.0")).build());
     }
 
     @Override
     public List<TypeInstrumentation> instrumentationTypes() {
-        return singletonList(new WebClientInstrumentation());
+        return singletonList(new ExternalCallInstrumentation());
     }
 }

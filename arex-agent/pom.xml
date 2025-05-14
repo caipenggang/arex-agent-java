@@ -191,6 +191,11 @@
             <artifactId>arex-httpclient-webclient-v5</artifactId>
             <version>${project.version}</version>
         </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>arex-httpclient-webclient-v2</artifactId>
+        <version>${project.version}</version>
+      </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>arex-shiro</artifactId>

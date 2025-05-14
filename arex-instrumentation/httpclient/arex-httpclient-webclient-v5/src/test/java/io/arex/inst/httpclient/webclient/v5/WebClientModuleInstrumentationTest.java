@@ -1,8 +1,8 @@
 package io.arex.inst.httpclient.webclient.v5;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
 
 class WebClientModuleInstrumentationTest {
 

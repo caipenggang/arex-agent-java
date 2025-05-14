@@ -12,11 +12,11 @@ class ComparableVersionTest {
         assertEquals(0, comparableVersion1.compareTo(comparableVersion2));
 
         comparableVersion1 = ComparableVersion.of("1.2.1");
-        comparableVersion2 = ComparableVersion.of("1.2.2");
+        comparableVersion2 = ComparableVersion.of("1.3");
         assertEquals(-1, comparableVersion1.compareTo(comparableVersion2));
 
         comparableVersion1 = ComparableVersion.of("1.2.1");
-        comparableVersion2 = ComparableVersion.of("1.2.0");
+        comparableVersion2 = ComparableVersion.of("1.3");
         assertEquals(1, comparableVersion1.compareTo(comparableVersion2));
 
         comparableVersion1 = ComparableVersion.of("1.2.1");

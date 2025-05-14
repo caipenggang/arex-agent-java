@@ -42,6 +42,7 @@
         <module>httpclient/arex-httpclient-okhttp-v3</module>
         <module>httpclient/arex-httpclient-apache-v4</module>
         <module>httpclient/arex-httpclient-webclient-v5</module>
+        <module>httpclient/arex-httpclient-webclient-v2</module>
         <module>httpclient/arex-httpclient-resttemplate</module>
         <module>httpclient/arex-httpclient-feign</module>
         <module>httpclient/arex-httpclient-ning</module>
@@ -56,7 +57,7 @@
         <module>authentication/arex-shiro</module>
         <module>authentication/arex-jcasbin</module>
         <module>config/arex-apollo</module>
-        <module>spring/arex-component-scan</module>
+        <module>external/arex-external-call</module>
     </modules>
     <dependencies>
         <dependency>
