@@ -1,4 +1,4 @@
-package io.arex.inst.httpclient.webclient.v5;
+package io.arex.inst.httpclient.webclient.v2;
 
 import static java.util.Collections.singletonList;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class WebClientModuleInstrumentation extends ModuleInstrumentation {
     public WebClientModuleInstrumentation() {
         super("webclient-v2", ModuleDescription.builder()
-                .supportFrom(ComparableVersion.of("5.3.0")).build());
+                .supportFrom(ComparableVersion.of("5.2.0")).build());
     }
 
     @Override
