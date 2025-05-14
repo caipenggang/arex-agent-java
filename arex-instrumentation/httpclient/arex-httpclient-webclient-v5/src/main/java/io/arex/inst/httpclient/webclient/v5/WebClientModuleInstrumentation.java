@@ -12,7 +12,7 @@ import java.util.List;
 @AutoService(ModuleInstrumentation.class)
 public class WebClientModuleInstrumentation extends ModuleInstrumentation {
     public WebClientModuleInstrumentation() {
-        super("webclient-v2", ModuleDescription.builder()
+        super("webclient-v5", ModuleDescription.builder()
                 .supportFrom(ComparableVersion.of("5.3.0")).build());
     }
 
