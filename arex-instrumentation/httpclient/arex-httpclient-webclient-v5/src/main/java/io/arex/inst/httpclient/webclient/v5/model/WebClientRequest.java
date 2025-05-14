@@ -57,7 +57,7 @@ public class WebClientRequest extends AbstractClientHttpRequest {
 
     @Override
     public DataBufferFactory bufferFactory() {
-        return DefaultDataBufferFactory.sharedInstance;
+        return new DefaultDataBufferFactory();
     }
 
     @Override

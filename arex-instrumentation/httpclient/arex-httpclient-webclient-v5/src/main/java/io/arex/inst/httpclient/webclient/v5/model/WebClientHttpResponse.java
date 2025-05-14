@@ -57,6 +57,6 @@ public class WebClientHttpResponse implements ClientHttpResponse {
     }
 
     public DataBufferFactory bufferFactory() {
-        return DefaultDataBufferFactory.sharedInstance;
+        return new DefaultDataBufferFactory();
     }
 }

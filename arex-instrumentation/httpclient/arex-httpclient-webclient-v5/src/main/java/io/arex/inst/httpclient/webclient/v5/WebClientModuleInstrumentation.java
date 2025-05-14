@@ -12,8 +12,8 @@ import java.util.List;
 @AutoService(ModuleInstrumentation.class)
 public class WebClientModuleInstrumentation extends ModuleInstrumentation {
     public WebClientModuleInstrumentation() {
-        super("webclient-v5", ModuleDescription.builder()
-                .supportFrom(ComparableVersion.of("5.3.0")).build());
+        super("webclient-v5", ModuleDescription.builder().name("spring.webflux")
+                .supportFrom(ComparableVersion.of("5.3.8")).build());
     }
 
     @Override
