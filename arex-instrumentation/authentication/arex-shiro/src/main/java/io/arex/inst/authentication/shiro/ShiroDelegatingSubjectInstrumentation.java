@@ -3,6 +3,7 @@ package io.arex.inst.authentication.shiro;
 import static net.bytebuddy.matcher.ElementMatchers.named;
 import static net.bytebuddy.matcher.ElementMatchers.takesArguments;
 
+import io.arex.agent.bootstrap.model.MockResult;
 import io.arex.inst.extension.MethodInstrumentation;
 import io.arex.inst.extension.TypeInstrumentation;
 import io.arex.inst.runtime.context.ContextManager;
@@ -45,19 +46,20 @@ public class ShiroDelegatingSubjectInstrumentation extends TypeInstrumentation {
 
     public static class GetPrincipalAdvice {
         @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class, suppress = Throwable.class)
-        public static boolean onEnter() {
-            return ContextManager.needReplay();
+        public static boolean onEnter(@Advice.Local("mockResult") MockResult mockResult) {
+            mockResult = ShiroAdvice.replay();
+            return mockResult != null && mockResult.notIgnoreMockResult();
         }
 
         @Advice.OnMethodExit(onThrowable = Throwable.class, suppress = Throwable.class)
-        public static void onExit(@Advice.Return(readOnly = false) Object result) {
-            if (ContextManager.needReplay()) {
-                // mock replay
-                result = ContextManager.currentContext().getAttachment("shiro.principal");
-            } else if (ContextManager.needRecord()) {
-                // record time
-                ContextManager.setAttachment("shiro.principal", result);
+        public static void onExit(@Advice.Return(readOnly = false) Object result,
+                @Advice.Local("mockResult") MockResult mockResult) {
+            if (mockResult != null && mockResult.notIgnoreMockResult()) {
+                result = mockResult.getResult();
+                return;
             }
+
+            ShiroAdvice.record(result);
         }
     }
 }
