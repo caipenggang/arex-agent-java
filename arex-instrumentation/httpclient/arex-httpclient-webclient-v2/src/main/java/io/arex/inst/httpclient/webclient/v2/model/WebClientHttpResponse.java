@@ -1,4 +1,4 @@
-package io.arex.inst.httpclient.webclient.v5.model;
+package io.arex.inst.httpclient.webclient.v2.model;
 
 import io.arex.inst.httpclient.common.HttpResponseWrapper;
 import org.springframework.core.io.buffer.DataBuffer;

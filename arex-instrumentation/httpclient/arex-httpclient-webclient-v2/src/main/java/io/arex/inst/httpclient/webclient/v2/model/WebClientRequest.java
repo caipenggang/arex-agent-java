@@ -1,4 +1,4 @@
-package io.arex.inst.httpclient.webclient.v5.model;
+package io.arex.inst.httpclient.webclient.v2.model;
 
 import org.reactivestreams.Publisher;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -48,11 +48,6 @@ public class WebClientRequest extends AbstractClientHttpRequest {
             }));
         }
         return requestCookies;
-    }
-
-    @Override
-    public <T> T getNativeRequest() {
-        return null;
     }
 
     @Override

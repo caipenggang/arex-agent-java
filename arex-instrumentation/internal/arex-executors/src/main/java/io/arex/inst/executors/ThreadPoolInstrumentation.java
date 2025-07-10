@@ -1,18 +1,21 @@
 package io.arex.inst.executors;
 
+import static java.util.Arrays.asList;
+import static net.bytebuddy.matcher.ElementMatchers.isMethod;
+import static net.bytebuddy.matcher.ElementMatchers.isPublic;
+import static net.bytebuddy.matcher.ElementMatchers.isStatic;
+import static net.bytebuddy.matcher.ElementMatchers.not;
+import static net.bytebuddy.matcher.ElementMatchers.takesArgument;
+
 import io.arex.agent.bootstrap.ctx.CallableWrapper;
 import io.arex.agent.bootstrap.ctx.RunnableWrapper;
 import io.arex.inst.extension.MethodInstrumentation;
 import io.arex.inst.extension.TypeInstrumentation;
+import java.util.List;
+import java.util.concurrent.Callable;
 import net.bytebuddy.asm.Advice;
 import net.bytebuddy.description.type.TypeDescription;
 import net.bytebuddy.matcher.ElementMatcher;
-
-import java.util.List;
-import java.util.concurrent.Callable;
-
-import static java.util.Arrays.asList;
-import static net.bytebuddy.matcher.ElementMatchers.*;
 
 public class ThreadPoolInstrumentation extends TypeInstrumentation {
     private List<String> includeExecutors = null;
@@ -49,6 +52,7 @@ public class ThreadPoolInstrumentation extends TypeInstrumentation {
     private List<String> includeExecutors() {
         return asList(
                 "java.util.concurrent.ThreadPoolExecutor",
+                "java.util.concurrent.ScheduledThreadPoolExecutor",
                 "java.util.concurrent.AbstractExecutorService",
                 "java.util.concurrent.CompletableFuture$ThreadPerTaskExecutor",
                 "java.util.concurrent.Executors$DelegatedExecutorService",
