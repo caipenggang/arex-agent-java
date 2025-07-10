@@ -4,7 +4,6 @@ import io.arex.agent.bootstrap.model.MockResult;
 import io.arex.agent.bootstrap.model.Mocker;
 import io.arex.inst.runtime.context.ContextManager;
 import io.arex.inst.runtime.serializer.Serializer;
-import io.arex.inst.runtime.util.MergeRecordReplayUtil;
 import io.arex.inst.runtime.util.MockUtils;
 
 /**
@@ -18,11 +17,12 @@ public class ShiroAdvice {
         if (!ContextManager.needRecord()) return;
 
         Mocker mocker = buildMocker();
+        mocker.setNeedMerge(true);
         mocker.getTargetResponse().setBody(Serializer.serialize(result));
         if (result != null) {
             mocker.getTargetResponse().setType(result.getClass().getName());
         }
-        MergeRecordReplayUtil.mergeRecord(mocker);
+        MockUtils.recordMocker(mocker);
     }
 
     public static MockResult replay() {

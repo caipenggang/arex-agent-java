@@ -7,7 +7,6 @@ import io.arex.agent.bootstrap.model.MockResult;
 import io.arex.inst.extension.MethodInstrumentation;
 import io.arex.inst.extension.TypeInstrumentation;
 import io.arex.inst.runtime.context.ContextManager;
-import io.arex.inst.runtime.context.RepeatedCollectManager;
 import java.util.ArrayList;
 import java.util.List;
 import net.bytebuddy.asm.Advice;
@@ -48,9 +47,6 @@ public class ShiroDelegatingSubjectInstrumentation extends TypeInstrumentation {
     public static class GetPrincipalAdvice {
         @Advice.OnMethodEnter(skipOn = Advice.OnNonDefaultValue.class, suppress = Throwable.class)
         public static boolean onEnter(@Advice.Local("mockResult") MockResult mockResult) {
-            if (ContextManager.needRecord()) {
-                RepeatedCollectManager.enter();
-            }
             mockResult = ShiroAdvice.replay();
             return mockResult != null && mockResult.notIgnoreMockResult();
         }
