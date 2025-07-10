@@ -4,6 +4,7 @@ import io.arex.agent.bootstrap.model.MockResult;
 import io.arex.agent.bootstrap.model.Mocker;
 import io.arex.inst.runtime.context.ContextManager;
 import io.arex.inst.runtime.serializer.Serializer;
+import io.arex.inst.runtime.util.MergeRecordReplayUtil;
 import io.arex.inst.runtime.util.MockUtils;
 
 /**
@@ -21,7 +22,7 @@ public class ShiroAdvice {
         if (result != null) {
             mocker.getTargetResponse().setType(result.getClass().getName());
         }
-        MockUtils.recordMocker(mocker);
+        MergeRecordReplayUtil.mergeRecord(mocker);
     }
 
     public static MockResult replay() {
@@ -33,7 +34,6 @@ public class ShiroAdvice {
     }
 
     private static Mocker buildMocker() {
-        // 你可以用 createAuthentication()，或者 createGeneral()
         return MockUtils.createRedis(OPERATION_NAME);
     }
 }
