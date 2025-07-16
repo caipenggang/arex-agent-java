@@ -11,7 +11,7 @@ import io.arex.inst.runtime.util.MockUtils;
  * @since 2025-07-09
  */
 public class ShiroAdvice {
-    private static final String OPERATION_NAME = "org.apache.shiro.subject.support.DelegatingSubject#getPrincipal";
+    private static final String OPERATION_NAME = "org.apache.shiro.subject.Subject#getPrincipal";
 
     public static void record(Object result) {
         if (!ContextManager.needRecord()) return;

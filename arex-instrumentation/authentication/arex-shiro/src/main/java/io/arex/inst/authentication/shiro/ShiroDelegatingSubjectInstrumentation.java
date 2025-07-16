@@ -1,7 +1,6 @@
 package io.arex.inst.authentication.shiro;
 
 import static net.bytebuddy.matcher.ElementMatchers.named;
-import static net.bytebuddy.matcher.ElementMatchers.takesArguments;
 
 import io.arex.agent.bootstrap.model.MockResult;
 import io.arex.inst.extension.MethodInstrumentation;
@@ -20,8 +19,7 @@ public class ShiroDelegatingSubjectInstrumentation extends TypeInstrumentation {
 
     @Override
     public ElementMatcher<TypeDescription> typeMatcher() {
-        return named("org.apache.shiro.subject.support.DelegatingSubject")
-                .or(named("org.apache.shiro.web.subject.support.WebDelegatingSubject"));
+        return named("org.apache.shiro.subject.support.DelegatingSubject");
     }
 
     @Override
@@ -31,9 +29,9 @@ public class ShiroDelegatingSubjectInstrumentation extends TypeInstrumentation {
                 named("assertAuthzCheckPossible"),
                 AssertAuthzCheckPossibleAdvice.class.getName()));
         // 新增 getPrincipal() 拦截
-        methods.add(new MethodInstrumentation(
-                named("getPrincipal").and(takesArguments(0)),  // 无参方法
-                GetPrincipalAdvice.class.getName()));
+//        methods.add(new MethodInstrumentation(
+//                named("getPrincipal").and(takesArguments(0)),  // 无参方法
+//                GetPrincipalAdvice.class.getName()));
         return methods;
     }
 
